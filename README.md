@@ -6,36 +6,39 @@ An embedded climate control system simulated in Proteus, featuring multi-sensor 
 
 This project implements an embedded climate control system designed to monitor and regulate environmental conditions using three DHT22 temperature and humidity sensors.
 
-The system continuously collects sensor measurements, calculates average temperature and humidity values, and controls a heater, cooler, and humidifier based on predefined thresholds. The control strategy is implemented using Finite State Machines (FSMs), allowing stable and efficient environmental regulation through multiple operating modes.
+The system continuously collects sensor measurements, calculates average temperature and humidity values, and controls a heater, cooler, and humidifier according to predefined thresholds. The control strategy is implemented using Finite State Machines (FSMs), enabling automatic environmental regulation with multiple operating levels.
+
+The complete system was designed and verified in Proteus.
 
 ## Features
 
-- Multi-sensor temperature and humidity monitoring using three DHT22 sensors
-- Sensor data averaging for improved measurement reliability
-- FSM-based environmental control
-- Independent temperature and humidity control logic
+- Three DHT22 sensors for temperature and humidity monitoring
+- Multi-sensor data acquisition and averaging
+- FSM-based control architecture
+- Parallel temperature and humidity control
 - Multi-level heater operation (OFF, LOW, HIGH)
 - Multi-level cooler operation (OFF, LOW, HIGH)
 - Multi-level humidifier operation (OFF, LOW, HIGH)
 - Real-time monitoring through a virtual terminal
-- Complete system simulation and verification in Proteus
+- LED-based visualization of actuator states
+- Complete simulation and validation in Proteus
 
 ## System Architecture
 
-The system consists of three main subsystems:
+The system consists of three major subsystems:
 
 ### Sensors
 
-Three DHT22 sensors are used to measure:
+Three DHT22 sensors measure:
 
 - Temperature
 - Relative Humidity
 
-The controller calculates average environmental values from all sensor readings before making control decisions.
+Average temperature and humidity values are calculated from all sensor readings and used as inputs to the controller.
 
 ### Control Logic
 
-The control logic is implemented using Finite State Machines (FSMs) and is divided into two independent sections:
+The system is divided into two parallel FSM-based control sections:
 
 1. Temperature Control
    - Heater Controller
@@ -44,7 +47,7 @@ The control logic is implemented using Finite State Machines (FSMs) and is divid
 2. Humidity Control
    - Humidifier Controller
 
-Each controller continuously evaluates sensor data and updates actuator states accordingly.
+Both sections operate simultaneously and continuously update actuator states based on the average environmental measurements.
 
 ### Actuators
 
@@ -54,15 +57,11 @@ The system controls:
 - Cooler
 - Humidifier
 
-Each actuator supports multiple operating levels depending on environmental conditions.
+Each actuator supports OFF, LOW, and HIGH operating modes.
 
-## FSM-Based Control
+## FSM-Based Environmental Control
 
-The project employs Finite State Machines to manage actuator behavior and system transitions.
-
-### Temperature Controller
-
-#### Cooler States
+### Cooler Control
 
 | Average Temperature | State |
 |---------------------|--------|
@@ -70,7 +69,7 @@ The project employs Finite State Machines to manage actuator behavior and system
 | 32°C < T ≤ 38°C | LOW |
 | T < 28°C | OFF |
 
-#### Heater States
+### Heater Control
 
 | Average Temperature | State |
 |---------------------|--------|
@@ -78,7 +77,7 @@ The project employs Finite State Machines to manage actuator behavior and system
 | 15°C ≤ T < 20°C | LOW |
 | T > 23°C | OFF |
 
-### Humidity Controller
+### Humidifier Control
 
 | Average Humidity | State |
 |------------------|--------|
@@ -86,34 +85,38 @@ The project employs Finite State Machines to manage actuator behavior and system
 | 70% ≤ H < 80% | LOW |
 | H > 85% | OFF |
 
-The use of different activation and deactivation thresholds provides hysteresis behavior, reducing unnecessary switching and improving system stability.
+The FSM continuously monitors environmental conditions and updates the actuator states accordingly.
 
 ## Proteus Simulation
 
-The complete system was designed and verified in Proteus and includes:
+The simulation environment includes:
 
 - Three DHT22 sensors
-- Microcontroller-based control logic
 - Heater indicators
 - Cooler indicators
 - Humidifier indicators
-- Virtual terminal for monitoring system operation
+- Virtual terminal
+- FSM-based control logic
+
+The virtual terminal displays sensor measurements and calculated average environmental values during system operation.
 
 ## Technologies & Concepts
 
-- Embedded Systems
 - C/C++
+- Embedded Systems
 - Proteus Design Suite
 - DHT22 Sensors
 - Finite State Machines (FSM)
-- Sensor Data Acquisition
+- Multi-Sensor Data Acquisition
 - Environmental Monitoring
+- Temperature Control
+- Humidity Control
 - Digital Control Systems
-- Hardware/Software Integration
+- Embedded Programming
 
 ## Documentation
 
-A detailed project report containing system design, FSM diagrams, implementation details, and simulation results is available in:
+A detailed project report containing FSM diagrams, system design, implementation details, and simulation results is provided in:
 
 ```text
 Report.pdf
