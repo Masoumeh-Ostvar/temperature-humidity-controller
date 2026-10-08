@@ -116,7 +116,7 @@ The virtual terminal displays sensor measurements and calculated average environ
 
 ## Documentation
 
-A detailed project report containing FSM diagrams, system design, implementation details, and simulation results is provided in:
+A brief project report describing the implementation process, model training, and inference workflow is available in:
 
 ```text
 Report.pdf
